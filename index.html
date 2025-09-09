@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swetha Annadurai | Portfolio</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* Base */
+body {
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(rgba(186,85,211,0.05),rgba(186,85,211,0.05)),#faf7ff url('https://www.transparenttextures.com/patterns/cubes.png');
+  background-size:200px 200px;
+  color:#111;
+  scroll-behavior:smooth;
+}
+
+/* Navbar */
+.navbar {background:#8e44ad; box-shadow:0 2px 15px rgba(0,0,0,0.05);
+  padding-top: 1rem;   /* increase top padding */
+  padding-bottom: 1rem;
+}
+.navbar-brand{font-weight:700;color:#fff !important;font-size:1.3rem;letter-spacing:1px;}
+.nav-link{color:#fff !important;font-weight:500;transition:color 0.3s;}
+.nav-link:hover{color:#ffeb3b !important;}
+.btn-talk{background:#ffeb3b;color:#111 !important;padding:8px 18px;border-radius:25px;font-weight:600;transition:background 0.3s;}
+.btn-talk:hover{background:#fff;color:#8e44ad !important;}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 8% 60px;text-align:left;}
+.content-box{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px;max-width:1200px;width:100%;}
+.text-content{flex:1;min-width:280px;}
+.tagline{display:inline-block;background:#f8eaff;color:#8e44ad;padding:6px 14px;border-radius:20px;font-size:14px;margin-bottom:20px;}
+.hero h1{font-size:2.6rem;font-weight:700;margin-bottom:10px;color:#111;}
+.hero h1 span{color:#111;}
+.hero h3{font-size:1.2rem;font-weight:700;margin-bottom:20px;color:#5c5cd6;} /* updated */
+.hero p{font-size:1rem;color:#666;margin-bottom:25px;}
+
+/* Profile */
+.profile-container{position:relative; display:inline-block; transition:transform 0.4s;}
+.profile-container:hover{transform:scale(1.05);}
+.profile-photo{width:280px;height:280px;border-radius:50%;object-fit:cover;
+position: relative;
+bottom:10px;
+}
+
+/* Experience Badge */
+.experience-badge{
+  position:absolute; bottom:-15px; left:-15px;
+  background:#ffeb3b; color:#111; border-radius:50%;
+  width:90px; height:90px;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.15);
+  transition:transform 0.3s;
+  text-align:center;
+}
+.experience-badge .years{
+  font-size:22px; font-weight:700; line-height:1;
+}
+.experience-badge .label{
+  font-size:11px; font-weight:500; line-height:1.2;
+}
+.profile-container:hover .experience-badge{transform:scale(1.1);}
+
+/* Hire Me circle */
+.hire-circle{
+  position:absolute; bottom:-15px; right:-15px;
+  width:90px; height:90px;
+  border-radius:50%;
+  background:#8e44ad;
+  display:flex; justify-content:center; align-items:center;
+  color:#fff; font-size:11px; font-weight:600; text-align:center;
+  border:none; cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  transition:all 0.3s;
+}
+.hire-circle:hover{background:#5c5cd6; transform:scale(1.1);} /* updated */
+
+/* Social Links */
+.social-links{display:flex;gap:15px;margin-top:25px;}
+.social-links a{width:40px;height:40px;border-radius:50%;border:2px solid #8e44ad;display:flex;align-items:center;justify-content:center;color:#8e44ad;font-size:18px;transition:all 0.3s;}
+.social-links a:hover{background:#8e44ad;color:#fff;transform:scale(1.1);}
+/* Sections */
+section{padding:80px 8%;}
+.section-title{font-size:2rem;font-weight:700;text-align:center;margin-bottom:40px;color:#8e44ad;}
+#about img{max-width:240px;margin-bottom:20px;}
+#about p{font-size:1rem;line-height:1.8;text-align:justify;}
+.progress{height:10px;border-radius:20px;background:#e9ecef;}
+.progress-bar{transition:width 2s ease-in-out;border-radius:20px;}
+.list-group-item,.card{border:none;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.05);margin-bottom:20px;padding:20px;transition:transform 0.3s;}
+.list-group-item:hover,.card:hover{transform:translateY(-5px);}
+#contact a{color:#8e44ad;text-decoration:none;}
+#contact a:hover{text-decoration:underline;}
+form .form-control{border-radius:10px;padding:12px;}
+form .btn-primary{background:#8e44ad;border:none;border-radius:25px;padding:10px 20px;}
+.footer{background:#fff;text-align:center;padding:20px;font-size:0.9rem;color:#555;border-top:1px solid #eee;}
+.reveal{opacity:0;transform:translateY(40px);transition:all 1s;}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+/* Responsive */
+@media (max-width:992px){
+  .content-box{flex-direction:column-reverse;text-align:center;}
+  .profile-container{margin-bottom:20px;}
+  .profile-photo{width:220px;height:220px;}
+  .experience-badge{width:70px;height:70px;bottom:-12px;left:-12px;}
+  .experience-badge .years{font-size:18px;}
+  .experience-badge .label{font-size:9px;}
+  .hire-circle{width:70px;height:70px;font-size:9px;bottom:-12px;right:-12px;}
+  .social-links {
+    justify-content: center;
+  }
+}
+@media (max-width:576px){
+  .hero h1{font-size:2rem;}
+  .hero h3{font-size:1rem;}
+  .profile-photo{width:180px;height:180px;}
+  .experience-badge{width:60px;height:60px;bottom:-10px;left:-10px;}
+  .experience-badge .years{font-size:16px;}
+  .experience-badge .label{font-size:8px;}
+  .hire-circle{width:60px;height:60px;font-size:8px;bottom:-10px;right:-10px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Swetha Annadurai</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn-talk ms-3">Let’s Talk</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="content-box">
+    <div class="text-content">
+      <div class="tagline">👋 Welcome to my portfolio</div>
+      <h1>I'm <span>Swetha Annadurai</span></h1>
+      <h3>Data Analytics with Digital Marketing & <br>Content Management Professional</h3>
+      <p>I'm passionate about social media marketing, campaign optimization, and <br>delivering impactful content strategies to boost engagement and growth.</p>
+      <div class="social-links">
+        <a href="mailto:swethaannadurai07@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://linkedin.com/in/swetha-annadurai-67a029231" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="profile-container">
+      <img src="Swetha.jpg" alt="Profile Photo" class="profile-photo">
+      <div class="experience-badge">
+        <div class="years">2+</div>
+        <div class="label">Years Exp</div>
+      </div>
+      <button class="hire-circle" title="Hire Me">Hire Me Now 💼</button>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="reveal">
+  <h2 class="section-title">About Me</h2>
+  <div class="row align-items-center">
+    <div class="col-md-4 text-center mb-4 mb-md-0">
+      <img src="Swetha2.jpg" alt="Profile Photo" class="img-fluid rounded">
+    </div>
+    <div class="col-md-8">
+      <p>
+        Detail-oriented and digitally fluent marketing and admin professional with hands-on experience in social media content management, lead tracking, and campaign coordination. Skilled in updating and structuring content, maintaining brand consistency, and supporting technical and creative teams. Strong understanding of UX principles, CMS systems, and content optimisation for user engagement.
+        <br><br>
+        With a growing expertise in data analytics, I bring the ability to interpret campaign metrics, extract insights, and support data-driven decision-making for improved engagement and performance. My combined background in digital marketing and content management enables me to bridge creative strategy with analytical precision, ensuring impactful and measurable results.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="reveal">
+  <h2 class="section-title">Skills</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <p>Content Management Systems - 80%</p>
+      <div class="progress mb-3"><div class="progress-bar bg-primary" data-percentage="80"></div></div>
+      <p>Data Analysis & Excel - 85%</p>
+      <div class="progress mb-3"><div class="progress-bar bg-success" data-percentage="85"></div></div>
+      <p>Digital Content Scheduling - 90%</p>
+      <div class="progress mb-3"><div class="progress-bar bg-info" data-percentage="90"></div></div>
+    </div>
+    <div class="col-md-6">
+      <p>Social Media Marketing - 85%</p>
+      <div class="progress mb-3"><div class="progress-bar bg-warning" data-percentage="85"></div></div>
+      <p>Campaign Tracking & ROI Reporting - 80%</p>
+      <div class="progress mb-3"><div class="progress-bar bg-danger" data-percentage="80"></div></div>
+      <p>Basic UX Understanding - 70%</p>
+      <div class="progress mb-3"><div class="progress-bar bg-secondary" data-percentage="70"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="reveal">
+  <h2 class="section-title">Experience</h2>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <h5>D-Media (Dec 2022 – Apr 2023)</h5>
+      <p>Sales and Data Support Assistant – Tracked leads, prepared daily sales reports in Excel, assisted in campaign setup, and learned about product lifecycle to ensure client-focused content delivery.</p>
+    </li>
+    <li class="list-group-item">
+      <h5>Centuria Academy (May 2023 – Nov 2023)</h5>
+      <p>Social Media Specialist & Admin – Managed and published educational content across Instagram, Facebook, and YouTube, coordinated updates with academic teams, scheduled posts aligned with marketing goals, and increased engagement and student inquiries.</p>
+    </li>
+  </ul>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="reveal">
+  <h2 class="section-title">Projects</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-leaf me-2"></i>Gen Z & Sustainable Fashion</h5>
+          <p class="card-text">Conducted an in-depth study on how Gen Z balances affordability with sustainability in fashion choices. Analyzed Patagonia’s content strategy, branding approach, and ethical positioning to understand consumer behavior and brand engagement patterns.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-graduation-cap me-2"></i>Educational Lead Generation</h5>
+          <p class="card-text">Designed and executed an Instagram-based lead generation campaign for an educational institution. Implemented structured content planning, tracked performance metrics, and achieved measurable improvements in engagement, inquiries, and conversions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="reveal">
+  <h2 class="section-title">Contact</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>Email:</strong> <a href="mailto:swethaannadurai07@gmail.com">swethaannadurai07@gmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/swetha-annadurai-67a029231" target="_blank">linkedin.com/in/swetha-annadurai</a></p>
+    </div>
+    <div class="col-md-6">
+      <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 Swetha Annadurai | Portfolio</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Reveal on scroll
+function revealOnScroll(){
+  const reveals = document.querySelectorAll(".reveal");
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const elementVisible = 150;
+    if(elementTop < windowHeight - elementVisible){ el.classList.add("active"); }
+    else{ el.classList.remove("active"); }
+  });
+}
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+// Skills progress bars
+document.addEventListener("DOMContentLoaded",()=>{
+  const skillsSection=document.querySelector("#skills");
+  const progressBars=document.querySelectorAll(".progress-bar");
+  function resetBars(){progressBars.forEach(bar=>bar.style.width="0");}
+  function animateBars(){progressBars.forEach(bar=>bar.style.width=bar.getAttribute("data-percentage")+"%");}
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){resetBars();setTimeout(animateBars,200);}
+      else{resetBars();}
+    });
+  },{threshold:0.4});
+  observer.observe(skillsSection);
+});
+</script>
+</body>
+</html>
